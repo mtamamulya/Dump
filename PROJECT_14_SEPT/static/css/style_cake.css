@@ -1,0 +1,287 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --tongue: #c12115;
+  --pupil: #fff;
+  --icing: #f2f2f2;
+  --stroke: #1a1a1a;
+}
+body {
+  --frosting: hsl(var(--frosting-hue, 0), 100%, 55%);
+  --lightness: 50;
+  --flame: 0;
+  --glow-hue: 40;
+  --glow-saturation: 50;
+  --glow-lightness: 35;
+  --glow-alpha: 0.4;
+  --transparency-alpha: 0;
+  --glow: hsla(var(--glow-hue), calc(var(--glow-saturation) * 1%), calc(var(--glow-lightness) * 1%), var(--glow-alpha));
+  --transparent: hsla(0, 0%, 0%, var(--transparency-alpha));
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background: hsl(180, 30%, calc(var(--lightness, 50) * 1%));
+}
+.tombol_kembali {
+  background: linear-gradient(45deg, #ff6f91, #ff9671);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 6px #d14a63;
+  transition: all 0.3s ease;
+  user-select: none;
+  z-index: 2;
+  margin-top: 500px;
+  
+}
+.whitespace {
+  width: 7px;
+}
+.birthday-button {
+  position: absolute;
+  transform: scale(0.6);
+  cursor: pointer;
+}
+.birthday-button__text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  font-weight: bold;
+  
+}
+.birthday-button__text .char {
+  display: inline-block;
+  color: hsl(var(--hue, 0), calc(var(--char-sat, 0) * 1%), calc(var(--char-light, 0) * 1%));
+}
+.birthday-button:before {
+  content: '';
+  position: absolute;
+  height: 240px;
+  width: 240px;
+  background: radial-gradient(var(--glow), var(--transparent) 30%), radial-gradient(var(--glow), var(--transparent) 50%);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%) scale(calc(var(--flame) * 3));
+  z-index: 2;
+  filter: blur(15px);
+  opacity: var(--flame);
+}
+.birthday-button:after {
+  content: '';
+  height: 30px;
+  width: 400px;
+  filter: blur(15px);
+  position: absolute;
+  background: radial-gradient(var(--glow), var(--transparent) 20%), radial-gradient(var(--glow), var(--transparent));
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(calc(var(--flame) * 1));
+  opacity: var(--flame);
+}
+.birthday-button__button {
+  width: 240px;
+  height: 100px;
+  position: relative;
+  border: 0;
+  background: var(--icing);
+  border-radius: 14px;
+  cursor: pointer;
+}
+.birthday-button__cake {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 289.5px;
+  display: none;
+}
+.cake__eye-body {
+  fill: var(--stroke);
+}
+.cake__eye-pupil {
+  fill: var(--pupil);
+}
+.cake__tongue {
+  fill: var(--tongue);
+}
+.cake__mouth-opening {
+  fill: var(--stroke);
+  stroke: var(--stroke);
+}
+.cake__sprinkle {
+  --sprinkle: hsl(var(--sprinkle-hue, 0), 100%, 75%);
+  fill: var(--sprinkle);
+}
+.cake__frosting--start {
+  fill: var(--frosting);
+}
+.cake__frosting--duplicate {
+  fill: var(--frosting);
+}
+.candle__flame {
+  opacity: var(--flame, 0);
+}
+.candle__flame-outer {
+  fill: #ff711f;
+}
+.candle__flame-inner {
+  fill: #edca1d;
+}
+.face__stroke {
+  stroke: var(--stroke);
+}
+.cake__candle:nth-of-type(1) {
+  --flame: 0;
+}
+.cake__candle:nth-of-type(2) {
+  --flame: 0;
+}
+.cake__candle:nth-of-type(3) {
+  --flame: 0;
+}
+label {
+  height: 44px;
+  width: 44px;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+label > svg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+label path {
+  fill: #476b6b;
+}
+label svg:nth-of-type(1) {
+  display: none;
+}
+[type='checkbox'] {
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+:checked ~ label svg:nth-of-type(1) {
+  display: block;
+}
+:checked ~ label svg:nth-of-type(2) {
+  display: none;
+}
+
+/* ====== Intro Screen ====== */
+.intro-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeOut 1s ease-in-out forwards;
+  animation-delay: 3.5s;
+}
+
+.intro-screen h1 {
+  font-size: 2.5em;
+  margin: 0.5em;
+}
+
+.intro-screen p {
+  font-size: 1.3em;
+  color: #666;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+/* ========== Intro Splash Screen ========== */
+.intro-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.typing-text {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.5em;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #000;
+  width: 0;
+  animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+.intro-screen p {
+  font-size: 1.2em;
+  color: #666;
+}
+.birthday-congrats {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5em;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
